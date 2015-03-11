@@ -45,6 +45,15 @@
 			this.participantProgressBar = new System.Windows.Forms.ProgressBar();
 			this.participantProgress = new System.Windows.Forms.Label();
 			this.timer_1 = new System.Windows.Forms.Timer(this.components);
+			this.listBox1 = new System.Windows.Forms.ListBox();
+			this.listBox2 = new System.Windows.Forms.ListBox();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.saveSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.loadSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.spreadsheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.participantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.participantControl9 = new UXLAB.ParticipantControl();
 			this.participantControl8 = new UXLAB.ParticipantControl();
 			this.participantControl7 = new UXLAB.ParticipantControl();
 			this.participantControl6 = new UXLAB.ParticipantControl();
@@ -53,14 +62,7 @@
 			this.participantControl3 = new UXLAB.ParticipantControl();
 			this.participantControl2 = new UXLAB.ParticipantControl();
 			this.participantControl1 = new UXLAB.ParticipantControl();
-			this.listBox1 = new System.Windows.Forms.ListBox();
-			this.listBox2 = new System.Windows.Forms.ListBox();
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.spreadsheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.participantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.participantControl9 = new UXLAB.ParticipantControl();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.settings.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.playtestDuration)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numOfParticipants)).BeginInit();
@@ -68,6 +70,7 @@
 			this.tabPage1.SuspendLayout();
 			this.Data.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
+			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// notfinishedList
@@ -189,11 +192,11 @@
 			// 
 			this.tabControl1.Controls.Add(this.tabPage1);
 			this.tabControl1.Controls.Add(this.Data);
-			this.tabControl1.Location = new System.Drawing.Point(1208, 51);
+			this.tabControl1.Location = new System.Drawing.Point(13, 32);
 			this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(380, 200);
+			this.tabControl1.Size = new System.Drawing.Size(1135, 428);
 			this.tabControl1.TabIndex = 69;
 			// 
 			// tabPage1
@@ -203,7 +206,7 @@
 			this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-			this.tabPage1.Size = new System.Drawing.Size(372, 171);
+			this.tabPage1.Size = new System.Drawing.Size(1127, 399);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Settings";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -247,94 +250,6 @@
 			this.timer_1.Tag = "1";
 			this.timer_1.Tick += new System.EventHandler(this.timer_Tick);
 			// 
-			// participantControl8
-			// 
-			this.participantControl8.Form = null;
-			this.participantControl8.Index = 0;
-			this.participantControl8.Location = new System.Drawing.Point(12, 822);
-			this.participantControl8.Name = "participantControl8";
-			this.participantControl8.ParticipantName = "NAME_##";
-			this.participantControl8.ParticipantNumber = 0;
-			this.participantControl8.Size = new System.Drawing.Size(1188, 107);
-			this.participantControl8.TabIndex = 77;
-			// 
-			// participantControl7
-			// 
-			this.participantControl7.Form = null;
-			this.participantControl7.Index = 0;
-			this.participantControl7.Location = new System.Drawing.Point(12, 709);
-			this.participantControl7.Name = "participantControl7";
-			this.participantControl7.ParticipantName = "NAME_##";
-			this.participantControl7.ParticipantNumber = 0;
-			this.participantControl7.Size = new System.Drawing.Size(1188, 107);
-			this.participantControl7.TabIndex = 76;
-			// 
-			// participantControl6
-			// 
-			this.participantControl6.Form = null;
-			this.participantControl6.Index = 0;
-			this.participantControl6.Location = new System.Drawing.Point(12, 596);
-			this.participantControl6.Name = "participantControl6";
-			this.participantControl6.ParticipantName = "NAME_##";
-			this.participantControl6.ParticipantNumber = 0;
-			this.participantControl6.Size = new System.Drawing.Size(1188, 107);
-			this.participantControl6.TabIndex = 75;
-			// 
-			// participantControl5
-			// 
-			this.participantControl5.Form = null;
-			this.participantControl5.Index = 0;
-			this.participantControl5.Location = new System.Drawing.Point(12, 483);
-			this.participantControl5.Name = "participantControl5";
-			this.participantControl5.ParticipantName = "NAME_##";
-			this.participantControl5.ParticipantNumber = 0;
-			this.participantControl5.Size = new System.Drawing.Size(1188, 107);
-			this.participantControl5.TabIndex = 74;
-			// 
-			// participantControl4
-			// 
-			this.participantControl4.Form = null;
-			this.participantControl4.Index = 0;
-			this.participantControl4.Location = new System.Drawing.Point(12, 370);
-			this.participantControl4.Name = "participantControl4";
-			this.participantControl4.ParticipantName = "NAME_##";
-			this.participantControl4.ParticipantNumber = 0;
-			this.participantControl4.Size = new System.Drawing.Size(1188, 107);
-			this.participantControl4.TabIndex = 73;
-			// 
-			// participantControl3
-			// 
-			this.participantControl3.Form = null;
-			this.participantControl3.Index = 0;
-			this.participantControl3.Location = new System.Drawing.Point(12, 257);
-			this.participantControl3.Name = "participantControl3";
-			this.participantControl3.ParticipantName = "NAME_##";
-			this.participantControl3.ParticipantNumber = 0;
-			this.participantControl3.Size = new System.Drawing.Size(1188, 107);
-			this.participantControl3.TabIndex = 72;
-			// 
-			// participantControl2
-			// 
-			this.participantControl2.Form = null;
-			this.participantControl2.Index = 0;
-			this.participantControl2.Location = new System.Drawing.Point(12, 144);
-			this.participantControl2.Name = "participantControl2";
-			this.participantControl2.ParticipantName = "NAME_##";
-			this.participantControl2.ParticipantNumber = 0;
-			this.participantControl2.Size = new System.Drawing.Size(1188, 107);
-			this.participantControl2.TabIndex = 71;
-			// 
-			// participantControl1
-			// 
-			this.participantControl1.Form = null;
-			this.participantControl1.Index = 0;
-			this.participantControl1.Location = new System.Drawing.Point(12, 31);
-			this.participantControl1.Name = "participantControl1";
-			this.participantControl1.ParticipantName = "NAME_##";
-			this.participantControl1.ParticipantNumber = 0;
-			this.participantControl1.Size = new System.Drawing.Size(1188, 107);
-			this.participantControl1.TabIndex = 70;
-			// 
 			// listBox1
 			// 
 			this.listBox1.FormattingEnabled = true;
@@ -368,9 +283,25 @@
 			// 
 			// fileToolStripMenuItem
 			// 
+			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveSettingsToolStripMenuItem,
+            this.loadSettingsToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
 			this.fileToolStripMenuItem.Text = "File";
+			// 
+			// saveSettingsToolStripMenuItem
+			// 
+			this.saveSettingsToolStripMenuItem.Name = "saveSettingsToolStripMenuItem";
+			this.saveSettingsToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
+			this.saveSettingsToolStripMenuItem.Text = "Save Settings";
+			this.saveSettingsToolStripMenuItem.Click += new System.EventHandler(this.saveSettingsToolStripMenuItem_Click);
+			// 
+			// loadSettingsToolStripMenuItem
+			// 
+			this.loadSettingsToolStripMenuItem.Name = "loadSettingsToolStripMenuItem";
+			this.loadSettingsToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
+			this.loadSettingsToolStripMenuItem.Text = "Load Settings";
 			// 
 			// spreadsheetToolStripMenuItem
 			// 
@@ -387,39 +318,138 @@
 			// 
 			// participantControl9
 			// 
-			this.participantControl9.Form = null;
 			this.participantControl9.Index = 0;
-			this.participantControl9.Location = new System.Drawing.Point(12, 935);
+			this.participantControl9.Location = new System.Drawing.Point(13, 925);
+			this.participantControl9.MainForm = null;
 			this.participantControl9.Name = "participantControl9";
 			this.participantControl9.ParticipantName = "NAME_##";
 			this.participantControl9.ParticipantNumber = 0;
 			this.participantControl9.Size = new System.Drawing.Size(1188, 107);
 			this.participantControl9.TabIndex = 77;
+			this.participantControl9.Visible = false;
 			// 
-			// dateTimePicker1
+			// participantControl8
 			// 
-			this.dateTimePicker1.Location = new System.Drawing.Point(487, 136);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-			this.dateTimePicker1.TabIndex = 80;
+			this.participantControl8.Index = 0;
+			this.participantControl8.Location = new System.Drawing.Point(13, 812);
+			this.participantControl8.MainForm = null;
+			this.participantControl8.Name = "participantControl8";
+			this.participantControl8.ParticipantName = "NAME_##";
+			this.participantControl8.ParticipantNumber = 0;
+			this.participantControl8.Size = new System.Drawing.Size(1188, 107);
+			this.participantControl8.TabIndex = 77;
+			this.participantControl8.Visible = false;
+			// 
+			// participantControl7
+			// 
+			this.participantControl7.Index = 0;
+			this.participantControl7.Location = new System.Drawing.Point(13, 699);
+			this.participantControl7.MainForm = null;
+			this.participantControl7.Name = "participantControl7";
+			this.participantControl7.ParticipantName = "NAME_##";
+			this.participantControl7.ParticipantNumber = 0;
+			this.participantControl7.Size = new System.Drawing.Size(1188, 107);
+			this.participantControl7.TabIndex = 76;
+			this.participantControl7.Visible = false;
+			// 
+			// participantControl6
+			// 
+			this.participantControl6.Index = 0;
+			this.participantControl6.Location = new System.Drawing.Point(13, 586);
+			this.participantControl6.MainForm = null;
+			this.participantControl6.Name = "participantControl6";
+			this.participantControl6.ParticipantName = "NAME_##";
+			this.participantControl6.ParticipantNumber = 0;
+			this.participantControl6.Size = new System.Drawing.Size(1188, 107);
+			this.participantControl6.TabIndex = 75;
+			this.participantControl6.Visible = false;
+			// 
+			// participantControl5
+			// 
+			this.participantControl5.Index = 0;
+			this.participantControl5.Location = new System.Drawing.Point(13, 473);
+			this.participantControl5.MainForm = null;
+			this.participantControl5.Name = "participantControl5";
+			this.participantControl5.ParticipantName = "NAME_##";
+			this.participantControl5.ParticipantNumber = 0;
+			this.participantControl5.Size = new System.Drawing.Size(1188, 107);
+			this.participantControl5.TabIndex = 74;
+			this.participantControl5.Visible = false;
+			// 
+			// participantControl4
+			// 
+			this.participantControl4.Index = 0;
+			this.participantControl4.Location = new System.Drawing.Point(13, 360);
+			this.participantControl4.MainForm = null;
+			this.participantControl4.Name = "participantControl4";
+			this.participantControl4.ParticipantName = "NAME_##";
+			this.participantControl4.ParticipantNumber = 0;
+			this.participantControl4.Size = new System.Drawing.Size(1188, 107);
+			this.participantControl4.TabIndex = 73;
+			this.participantControl4.Visible = false;
+			// 
+			// participantControl3
+			// 
+			this.participantControl3.Index = 0;
+			this.participantControl3.Location = new System.Drawing.Point(13, 247);
+			this.participantControl3.MainForm = null;
+			this.participantControl3.Name = "participantControl3";
+			this.participantControl3.ParticipantName = "NAME_##";
+			this.participantControl3.ParticipantNumber = 0;
+			this.participantControl3.Size = new System.Drawing.Size(1188, 107);
+			this.participantControl3.TabIndex = 72;
+			this.participantControl3.Visible = false;
+			// 
+			// participantControl2
+			// 
+			this.participantControl2.Index = 0;
+			this.participantControl2.Location = new System.Drawing.Point(13, 134);
+			this.participantControl2.MainForm = null;
+			this.participantControl2.Name = "participantControl2";
+			this.participantControl2.ParticipantName = "NAME_##";
+			this.participantControl2.ParticipantNumber = 0;
+			this.participantControl2.Size = new System.Drawing.Size(1188, 107);
+			this.participantControl2.TabIndex = 71;
+			this.participantControl2.Visible = false;
+			// 
+			// participantControl1
+			// 
+			this.participantControl1.Index = 0;
+			this.participantControl1.Location = new System.Drawing.Point(13, 21);
+			this.participantControl1.MainForm = null;
+			this.participantControl1.Name = "participantControl1";
+			this.participantControl1.ParticipantName = "NAME_##";
+			this.participantControl1.ParticipantNumber = 0;
+			this.participantControl1.Size = new System.Drawing.Size(1188, 107);
+			this.participantControl1.TabIndex = 70;
+			this.participantControl1.Visible = false;
+			// 
+			// groupBox1
+			// 
+			this.groupBox1.Controls.Add(this.participantControl1);
+			this.groupBox1.Controls.Add(this.participantControl2);
+			this.groupBox1.Controls.Add(this.participantControl3);
+			this.groupBox1.Controls.Add(this.participantControl9);
+			this.groupBox1.Controls.Add(this.participantControl4);
+			this.groupBox1.Controls.Add(this.participantControl8);
+			this.groupBox1.Controls.Add(this.participantControl5);
+			this.groupBox1.Controls.Add(this.participantControl7);
+			this.groupBox1.Controls.Add(this.participantControl6);
+			this.groupBox1.Location = new System.Drawing.Point(1220, 411);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(177, 624);
+			this.groupBox1.TabIndex = 80;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "groupBox1";
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1684, 1047);
-			this.Controls.Add(this.dateTimePicker1);
+			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.listBox2);
 			this.Controls.Add(this.listBox1);
-			this.Controls.Add(this.participantControl9);
-			this.Controls.Add(this.participantControl8);
-			this.Controls.Add(this.participantControl7);
-			this.Controls.Add(this.participantControl6);
-			this.Controls.Add(this.participantControl5);
-			this.Controls.Add(this.participantControl4);
-			this.Controls.Add(this.participantControl3);
-			this.Controls.Add(this.participantControl2);
-			this.Controls.Add(this.participantControl1);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.label17);
 			this.Controls.Add(this.notfinishedList);
@@ -438,6 +468,7 @@
 			this.Data.PerformLayout();
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
+			this.groupBox1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -476,7 +507,9 @@
 		private System.Windows.Forms.ToolStripMenuItem spreadsheetToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem participantToolStripMenuItem;
 		private ParticipantControl participantControl9;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
+		private System.Windows.Forms.ToolStripMenuItem saveSettingsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem loadSettingsToolStripMenuItem;
+		private System.Windows.Forms.GroupBox groupBox1;
 
     }
 }

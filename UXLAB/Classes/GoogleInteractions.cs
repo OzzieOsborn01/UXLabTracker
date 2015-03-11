@@ -7,24 +7,26 @@ using Google.GData.Spreadsheets;
 using Google.GData.Client;
 using System.Xml.Linq;
 using System.Windows.Forms;
+using UXLAB;
 
-namespace UXLAB
+namespace UXLAB.Classes
 {
+	//Class that handles the connections with Google and Google Spreadsheets in particular 
 	public class GoogleInteractions
 	{
+		#region Enums
 		public enum Worksheet { Study, Participant };
-		public enum Cell { Min = 0, Name = 0, Duration = 1, Completed = 2, Desired = 3, Total = 4, Now = 5, Max = 6 };
-		public enum CellType { InputValue, NumericValue, DisplayedValue};
-		
-		public GoogleInteractions()
+		public enum CellType { InputValue, NumericValue, DisplayedValue };		
+		#endregion		
+		public GoogleInteractions(ref SaveLoadManager SaveLoad)
 		{
 			authInfo = new AuthorizationInformation();
-			studyCells = new CellEntry[(int)Cell.Max];
+			studyCells = new CellEntry[(int)Form1.Cell.Max];
 
 			bUseColumns = true;
 			dimension = "B";
 			offset = 1;
-
+			saveLoad = SaveLoad;
 		}
 
 		#region Workbook
@@ -71,7 +73,7 @@ namespace UXLAB
 		#endregion
 
 		#region Cell
-		public bool FindCell(string cellLocation, Worksheet sheetType, Cell cellType = Cell.Max)
+		public bool FindCell(string cellLocation, Worksheet sheetType, Form1.Cell cellType = Form1.Cell.Max)
 		{
 			CellQuery cellQuery;
 			
@@ -150,7 +152,7 @@ namespace UXLAB
 			return false;
 		}
 
-		public string ReadStudyCell(Cell cell, CellType cellType = CellType.DisplayedValue)
+		public string ReadStudyCell(Form1.Cell cell, CellType cellType = CellType.DisplayedValue)
 		{
 			if(!ValidStudyCell(cell))
 				return "";
@@ -218,7 +220,7 @@ namespace UXLAB
 						}
 				}
 			}
-			catch(Exception exception)
+			catch(Exception)
 			{
 				value = "";
 				return false;
@@ -251,11 +253,10 @@ namespace UXLAB
 					default:
 						{
 							return false;
-							break;
 						}
 				}
 			}
-			catch (Exception exception)
+			catch (Exception)
 			{
 				return false;
 			}
@@ -264,6 +265,7 @@ namespace UXLAB
 		}
 		#endregion
 
+		//TODO: Find a better method for Google authorization than the method below
 		#region Copy-Paste method_FIND BETTER METHOD
 		public void CPAuthorizationCode()
 		{
@@ -291,16 +293,16 @@ namespace UXLAB
 
 				if (DialogResult.OK == dlgSave.ShowDialog())
 				{
-					XElement xRoot = new XElement("Root");
-					xRoot.Add(new XAttribute("Code", authInfo.parameters.AccessCode));
-					xRoot.Add(new XAttribute("Token", authInfo.accessToken));
-					xRoot.Save(dlgSave.FileName);
+					saveLoad.SetDocument(dlgSave.FileName);
+					saveLoad.CPWriteAuthorization(authInfo);
 				}
 				
 			CPAuthorizationCode();
 		}
 
-		public void CPReadAuthorization()
+		//Loads authorization code
+		//Returns false if unsuccessful
+		public bool CPReadAuthorization()
 		{
 			OpenFileDialog dlg = new OpenFileDialog();
 			dlg.Filter = "All Files|*.*|Xml Files|*.xml";
@@ -310,18 +312,22 @@ namespace UXLAB
 
 			if (DialogResult.OK == dlgResult)
 			{
-				XElement xRoot = XElement.Load(dlg.FileName);
-
-				authInfo.accessToken = xRoot.Attribute("Token").Value;
-				authInfo.parameters.AccessCode = xRoot.Attribute("Code").Value;
-				authInfo.parameters.AccessToken = authInfo.accessToken;
+				saveLoad.SetDocument(dlg.FileName);
+				saveLoad.CPReadAuthorization(ref authInfo);
+			}
+			else
+			{
+				return false;
 			}
 			CPAuthorizationCode();
 
+
+			return true;
 		}
 
-	#endregion
+		#endregion
 
+		#region Variables and Accessors
 		public AuthorizationInformation authInfo;
 		private GOAuth2RequestFactory requestFactory;
 		private SpreadsheetsService service;
@@ -330,6 +336,8 @@ namespace UXLAB
 		private bool bUseColumns;
 		private string dimension;
 		private int offset;
+		private string filePath;
+		SaveLoadManager saveLoad;
 
 		public string Dimension
 		{
@@ -348,10 +356,10 @@ namespace UXLAB
 			set { bUseColumns = value; }
 		}
 
-		private bool ValidStudyCell(Cell cellType)
+		private bool ValidStudyCell(Form1.Cell cellType)
 		{
 			int cell = (int)cellType;
-			return cell >= (int)Cell.Min && cell < (int)Cell.Max;
+			return cell >= (int)Form1.Cell.Min && cell < (int)Form1.Cell.Max;
 		}
 
 		public SpreadsheetEntry WorkbookEntry
@@ -360,7 +368,10 @@ namespace UXLAB
 			set { workbookEntry = value; }
 		}
 	}
+	
+		#endregion
 
+	//Information related to the Authorization of the use of the users Google spreadsheets
 	public class AuthorizationInformation
 	{
 		public AuthorizationInformation()

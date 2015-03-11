@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Classes\countdown.cs" />
     <Compile Include="Classes\Participant.cs" />
+    <Compile Include="Classes\SaveLoadManager.cs" />
     <Compile Include="Classes\Study.cs" />
     <Compile Include="Forms_and_Controls\Form1.cs">
       <SubType>Form</SubType>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UXLAB.Classes;
 
 namespace UXLAB
 {
@@ -22,11 +23,34 @@ namespace UXLAB
 
 		public void LoadSettingsFromForm()
 		{
-
+			nameCell.Text				= rootForm.StudyComponents.Name							;
+			durationCell.Text			= rootForm.StudyComponents.Duration						;
+			completedCell.Text			= rootForm.StudyComponents.Completed					;
+			totalCell.Text				= rootForm.StudyComponents.Total						;
+			nowCell.Text				= rootForm.StudyComponents.Now							;
+			desiredCell.Text			= rootForm.StudyComponents.Desired						;
+			workbook1.Text				= rootForm.StudyComponents.Workbook						;
+			worksheet1.Text				= rootForm.StudyComponents.StudySheet					;
+			worksheet2.Text				= rootForm.StudyComponents.ParticipantSheet				;
+			participantCollection.Text	= rootForm.StudyComponents.TestTimes					;
+			cellOffset.Value			= Decimal.Parse(rootForm.StudyComponents.Offsets)		;
+			checkBox1.Checked			= Boolean.Parse(rootForm.StudyComponents.UseColumns)	;
 		}
 		public void SaveSettingsToForm()
 		{
-
+			rootForm.StudyComponents.Name				= nameCell.Text					;
+			rootForm.StudyComponents.Duration			= durationCell.Text				;
+			rootForm.StudyComponents.Completed			= completedCell.Text			;
+			rootForm.StudyComponents.Total				= totalCell.Text				;
+			rootForm.StudyComponents.Now				= nowCell.Text					;
+			rootForm.StudyComponents.Desired			= desiredCell.Text				;
+			rootForm.StudyComponents.Workbook			= workbook1.Text				;
+			rootForm.StudyComponents.StudySheet			= worksheet1.Text				;
+			rootForm.StudyComponents.ParticipantSheet	= worksheet2.Text				;
+			rootForm.StudyComponents.TestTimes			= participantCollection.Text	;
+			rootForm.StudyComponents.Offsets			= cellOffset.Value.ToString()	;
+			rootForm.StudyComponents.UseColumns			= checkBox1.Checked.ToString()	;
+			rootForm.SaveSettings();
 		}
 
 		private void FindWorkbook(object sender, EventArgs e)
@@ -90,9 +114,9 @@ namespace UXLAB
 	
 		#endregion
 		#region Cells
-		private void FindStudyCellsCheck(TextBox cellTextBox, Label cellNotFound, GoogleInteractions.Cell type)
+		private void FindStudyCellsCheck(TextBox cellTextBox, Label cellNotFound, Form1.Cell type)
 		{
-			if (cellTextBox.Text.Length < 0 || type == GoogleInteractions.Cell.Max)
+			if (cellTextBox.Text.Length < 0 || type == Form1.Cell.Max)
 			{
 				cellNotFound.Visible = true;
 				cellNotFound.Text = "Cell not found.";
@@ -123,6 +147,7 @@ namespace UXLAB
 					NumericUpDown upDown = (NumericUpDown)sender;
 					if (upDown.Name == "cellOffset")
 					{
+						interaction.Offset = (int)upDown.Value;
 						return;
 					}
 				}
@@ -145,46 +170,45 @@ namespace UXLAB
 					}
 					else if (textBoxName == "nameCell")
 					{
-						FindStudyCellsCheck(nameCell, CellNotFoundN, GoogleInteractions.Cell.Name);
-						nameResults.Text = interaction.ReadStudyCell(GoogleInteractions.Cell.Name);
+						FindStudyCellsCheck(nameCell, CellNotFoundN, Form1.Cell.Name);
+						nameResults.Text = interaction.ReadStudyCell(Form1.Cell.Name);
 						//string test = ParentForm.GetType().ToString();
 						//int count = test.Length;
 						//count += 1;
 					}
 					else if (textBoxName == "durationCell")
 					{
-						FindStudyCellsCheck(durationCell, CellNotFoundDur, GoogleInteractions.Cell.Duration);
-						durationResults.Text = interaction.ReadStudyCell(GoogleInteractions.Cell.Duration);
+						FindStudyCellsCheck(durationCell, CellNotFoundDur, Form1.Cell.Duration);
+						durationResults.Text = interaction.ReadStudyCell(Form1.Cell.Duration);
 					}
 					else if (textBoxName == "completedCell")
 					{
-						FindStudyCellsCheck(completedCell, CellNotFoundC, GoogleInteractions.Cell.Completed);
-						completedResults.Text = interaction.ReadStudyCell(GoogleInteractions.Cell.Completed);
+						FindStudyCellsCheck(completedCell, CellNotFoundC, Form1.Cell.Completed);
+						completedResults.Text = interaction.ReadStudyCell(Form1.Cell.Completed);
 					}
 					else if (textBoxName == "desiredCell")
 					{
-						FindStudyCellsCheck(desiredCell, CellNotFoundDes, GoogleInteractions.Cell.Desired);
-						desiredResults.Text = interaction.ReadStudyCell(GoogleInteractions.Cell.Desired);
+						FindStudyCellsCheck(desiredCell, CellNotFoundDes, Form1.Cell.Desired);
+						desiredResults.Text = interaction.ReadStudyCell(Form1.Cell.Desired);
 					}
 					else if (textBoxName == "totalCell")
 					{
-						FindStudyCellsCheck(totalCell, CellNotFoundT, GoogleInteractions.Cell.Total);
-						totalResults.Text = interaction.ReadStudyCell(GoogleInteractions.Cell.Total);
+						FindStudyCellsCheck(totalCell, CellNotFoundT, Form1.Cell.Total);
+						totalResults.Text = interaction.ReadStudyCell(Form1.Cell.Total);
 					}
 					else if (textBoxName == "nowCell")
 					{
-						FindStudyCellsCheck(nowCell, CellNotFoundNw, GoogleInteractions.Cell.Now);
-						nowResults.Text = interaction.ReadStudyCell(GoogleInteractions.Cell.Now);
+						FindStudyCellsCheck(nowCell, CellNotFoundNw, Form1.Cell.Now);
+						nowResults.Text = interaction.ReadStudyCell(Form1.Cell.Now);
 					}
 					else if (textBoxName == "participantCollection")
 					{
 						interaction.Dimension = participantCollection.Text;
 						interaction.Offset = (int)cellOffset.Value;
 						return;
-
 					}
 				}
-				
+				SaveSettingsToForm();
 			}
 		}
 

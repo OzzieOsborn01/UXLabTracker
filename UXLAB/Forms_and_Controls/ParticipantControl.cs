@@ -7,15 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UXLAB.Classes;
 
 namespace UXLAB
 {
+	//Custom Control that represents the active participants' data
 	public partial class ParticipantControl : UserControl
 	{
 		public ParticipantControl()
 		{
 			InitializeComponent();
 		}
+		
+		#region Variables and Accessors
+		private Form1 mainForm;
+		public Form Form;
 
 		public Button Start
 		{
@@ -54,49 +60,50 @@ namespace UXLAB
 		{ get; set; }
 		public int Index
 		{ get; set; }
-		public Form1 Form
+		public Form1 MainForm
 		{
-			get { return form; }
-			set { form = value; }
-		}
+			get { return mainForm; }
+			set { mainForm = value; }
+		}		
+		#endregion
 
-		private Form1 form;
 
-
+		#region Control Functions
 		private void timer_Tick(object sender, EventArgs e)
 		{
-			Form.UpdateParticipant(ParticipantNumber);
+			MainForm.UpdateParticipant(ParticipantNumber);
 		}
-
 		private void start_Click(object sender, EventArgs e)
 		{
 			ParticipantControl outControl;
-			Form.GetParticipantControl(this.Index, out outControl);
-			ParticipantNumber = Form.StartParticipant(ref outControl);
+			MainForm.GetParticipantControl(this.Index, out outControl);
+			ParticipantNumber = MainForm.StartParticipant(ref outControl);
 
 			Start.Enabled = false;
 			Finish.Enabled = false;
 			NotFinish.Enabled = true;
 			Timer.Start();
-			Name = Form.GetName() + ParticipantNumber.ToString();
+			Name = MainForm.GetName() + ParticipantNumber.ToString();
 		}
 		//ADD CANCELATION CONDITIONS
 		private void finish_Click(object sender, EventArgs e)
 		{
-			Form.CurrParticipant++;
-			Form.FinishedParticipant++;
+			MainForm.CurrParticipant++;
+			MainForm.FinishedParticipant++;
 			Timer_Text.Text = "00:00";
 			Start.Enabled = true;
 			Finish.Enabled = false;
 			NotFinish.Enabled = false;
 			Status.BackColor = Color.YellowGreen;
 			ProgressBar.Value = 0;
-			ParticipantName = Form.Acronym + "_" + Form.CurrParticipant.ToString();
+			ParticipantName = MainForm.Acronym + "_" + MainForm.CurrParticipant.ToString();
 		}
+		
+		//If the participant leaves early
 		private void notfinished_Click(object sender, EventArgs e)
 		{
-			Form.ParticipantNotFinished(ParticipantNumber);
-			//Form.CountDowns[Index].timerRef.Stop();
+			MainForm.ParticipantNotFinished(ParticipantNumber);
+			//MainForm.CountDowns[Index].timerRef.Stop();
 			//notfinishedList.Items.Add(participantControls[Index].ParticipantName);
 			Timer.Stop();
 			Timer_Text.Text = "00:00";
@@ -105,8 +112,8 @@ namespace UXLAB
 			NotFinish.Enabled = false;
 			Status.BackColor = Color.YellowGreen;
 			ProgressBar.Value = 0;
-			ParticipantName = Form.Acronym + "_" + Form.CurrParticipant.ToString();
-		}
-
+			ParticipantName = MainForm.Acronym + "_" + MainForm.CurrParticipant.ToString();
+		}		
+		#endregion
 	}
 }

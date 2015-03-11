@@ -8,6 +8,7 @@ using Google.GData.Spreadsheets;
 
 namespace UXLAB.Classes
 {
+	//Class that handles the participants data
 	public class Participant
 	{
 		public Participant(int ParticipantNum, TimeSpan span, ref GoogleInteractions Interaction, ref ParticipantControl refControl)
@@ -18,11 +19,12 @@ namespace UXLAB.Classes
 			control.ProgressBar.Maximum = (int)span.TotalSeconds;
 			interaction = Interaction;
 		}
-		public void Update(DateTime delta)
+		
+		public void Update(TimeSpan delta)
 		{
-			string sNow = interaction.ReadStudyCell(GoogleInteractions.Cell.Now), sEnd;
-			interaction.RefreshandReadCell(timeCell, GoogleInteractions.CellType.DisplayedValue,  out sEnd);
-			timeLeft = DateTime.Parse(sEnd) - DateTime.Parse(sNow);
+			//string sNow = interaction.ReadStudyCell(Form1.Cell.Now), sEnd;
+			//interaction.RefreshandReadCell(timeCell, GoogleInteractions.CellType.DisplayedValue,  out sEnd);
+			timeLeft -= delta;
 
 			if (timeLeft.TotalSeconds > 0)
 			{
@@ -44,13 +46,14 @@ namespace UXLAB.Classes
 
 		}
 
+		#region Double Checks
 		private void DoubleCheckEnd()
 		{
 			string sEnd = "";
 			interaction.RefreshandReadCell(timeCell, GoogleInteractions.CellType.DisplayedValue, out sEnd);
 			DateTime end = DateTime.Parse(sEnd);
 
-			if(end != endTime)
+			if (end != endTime)
 			{
 				endTime = end;
 			}
@@ -59,8 +62,9 @@ namespace UXLAB.Classes
 		{
 			control = null;
 		}
+		#endregion
 
-#region Variables
+		#region Variables and Accessors
 		private TimeSpan timeLeft;
 		private DateTime endTime;
 		private ParticipantControl control;

@@ -48,15 +48,19 @@
 			this.groupBox7 = new System.Windows.Forms.GroupBox();
 			this.groupBox8 = new System.Windows.Forms.GroupBox();
 			this.nameResults = new System.Windows.Forms.TextBox();
+			this.nowResults = new System.Windows.Forms.TextBox();
 			this.totalResults = new System.Windows.Forms.TextBox();
 			this.durationResults = new System.Windows.Forms.TextBox();
 			this.desiredResults = new System.Windows.Forms.TextBox();
 			this.completedResults = new System.Windows.Forms.TextBox();
+			this.CellNotFoundNw = new System.Windows.Forms.Label();
 			this.CellNotFoundT = new System.Windows.Forms.Label();
 			this.CellNotFoundDes = new System.Windows.Forms.Label();
 			this.CellNotFoundC = new System.Windows.Forms.Label();
 			this.CellNotFoundDur = new System.Windows.Forms.Label();
+			this.nowCell = new System.Windows.Forms.TextBox();
 			this.CellNotFoundN = new System.Windows.Forms.Label();
+			this.label11 = new System.Windows.Forms.Label();
 			this.totalCell = new System.Windows.Forms.TextBox();
 			this.label9 = new System.Windows.Forms.Label();
 			this.nameCell = new System.Windows.Forms.TextBox();
@@ -73,10 +77,6 @@
 			this.participantCollection = new System.Windows.Forms.TextBox();
 			this.label10 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
-			this.nowCell = new System.Windows.Forms.TextBox();
-			this.CellNotFoundNw = new System.Windows.Forms.Label();
-			this.nowResults = new System.Windows.Forms.TextBox();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox4.SuspendLayout();
@@ -319,6 +319,13 @@
 			this.nameResults.Size = new System.Drawing.Size(168, 22);
 			this.nameResults.TabIndex = 0;
 			// 
+			// nowResults
+			// 
+			this.nowResults.Location = new System.Drawing.Point(6, 158);
+			this.nowResults.Name = "nowResults";
+			this.nowResults.Size = new System.Drawing.Size(168, 22);
+			this.nowResults.TabIndex = 0;
+			// 
 			// totalResults
 			// 
 			this.totalResults.Location = new System.Drawing.Point(6, 130);
@@ -346,6 +353,19 @@
 			this.completedResults.Name = "completedResults";
 			this.completedResults.Size = new System.Drawing.Size(168, 22);
 			this.completedResults.TabIndex = 0;
+			// 
+			// CellNotFoundNw
+			// 
+			this.CellNotFoundNw.AutoSize = true;
+			this.CellNotFoundNw.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.CellNotFoundNw.ForeColor = System.Drawing.Color.LimeGreen;
+			this.CellNotFoundNw.Location = new System.Drawing.Point(342, 164);
+			this.CellNotFoundNw.Name = "CellNotFoundNw";
+			this.CellNotFoundNw.Size = new System.Drawing.Size(159, 17);
+			this.CellNotFoundNw.TabIndex = 2;
+			this.CellNotFoundNw.Text = "Workbook not found.";
+			this.CellNotFoundNw.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.CellNotFoundNw.Visible = false;
 			// 
 			// CellNotFoundT
 			// 
@@ -399,6 +419,14 @@
 			this.CellNotFoundDur.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.CellNotFoundDur.Visible = false;
 			// 
+			// nowCell
+			// 
+			this.nowCell.Location = new System.Drawing.Point(171, 161);
+			this.nowCell.Name = "nowCell";
+			this.nowCell.Size = new System.Drawing.Size(168, 22);
+			this.nowCell.TabIndex = 0;
+			this.nowCell.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterPress);
+			// 
 			// CellNotFoundN
 			// 
 			this.CellNotFoundN.AutoSize = true;
@@ -411,6 +439,15 @@
 			this.CellNotFoundN.Text = "Workbook not found.";
 			this.CellNotFoundN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.CellNotFoundN.Visible = false;
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(47, 164);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(35, 17);
+			this.label11.TabIndex = 1;
+			this.label11.Text = "Now";
 			// 
 			// totalCell
 			// 
@@ -562,43 +599,6 @@
 			this.label3.Size = new System.Drawing.Size(167, 17);
 			this.label3.TabIndex = 1;
 			this.label3.Text = "Player End Test Columns";
-			// 
-			// label11
-			// 
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(47, 164);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(118, 17);
-			this.label11.TabIndex = 1;
-			this.label11.Text = "Total Participants";
-			// 
-			// nowCell
-			// 
-			this.nowCell.Location = new System.Drawing.Point(171, 161);
-			this.nowCell.Name = "nowCell";
-			this.nowCell.Size = new System.Drawing.Size(168, 22);
-			this.nowCell.TabIndex = 0;
-			this.nowCell.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnterPress);
-			// 
-			// CellNotFoundNw
-			// 
-			this.CellNotFoundNw.AutoSize = true;
-			this.CellNotFoundNw.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.CellNotFoundNw.ForeColor = System.Drawing.Color.LimeGreen;
-			this.CellNotFoundNw.Location = new System.Drawing.Point(342, 164);
-			this.CellNotFoundNw.Name = "CellNotFoundNw";
-			this.CellNotFoundNw.Size = new System.Drawing.Size(159, 17);
-			this.CellNotFoundNw.TabIndex = 2;
-			this.CellNotFoundNw.Text = "Workbook not found.";
-			this.CellNotFoundNw.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.CellNotFoundNw.Visible = false;
-			// 
-			// nowResults
-			// 
-			this.nowResults.Location = new System.Drawing.Point(6, 158);
-			this.nowResults.Name = "nowResults";
-			this.nowResults.Size = new System.Drawing.Size(168, 22);
-			this.nowResults.TabIndex = 0;
 			// 
 			// SpreadsheetForm
 			// 

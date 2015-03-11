@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UXLAB.Classes;
+using UXLAB;
 
 namespace UXLAB
 {
@@ -32,8 +34,15 @@ namespace UXLAB
 
 		private void LoadPrev(object sender, EventArgs e)
 		{
-			interaction.CPReadAuthorization();
-			this.Close();
+			bool SuccessfulLoad = false;
+			SuccessfulLoad = interaction.CPReadAuthorization();
+			
+			if(SuccessfulLoad)
+				this.Close();
+			else
+			{
+				label1.Visible = true;
+			}
 		}
 
 		private void textBox1_TextChanged(object sender, EventArgs e)
